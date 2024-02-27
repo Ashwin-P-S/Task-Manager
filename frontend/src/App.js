@@ -53,7 +53,7 @@ const App = () => {
         <div className="container">
             <h1>Task Manager</h1>
             <br />
-            <div>
+            <form>
                 <input
                     type="text"
                     placeholder="Task Title"
@@ -61,6 +61,7 @@ const App = () => {
                     onChange={(e) =>
                         setNewTask({ ...newTask, title: e.target.value })
                     }
+                    required
                 />
                 <br />
                 <br />
@@ -71,39 +72,45 @@ const App = () => {
                     onChange={(e) =>
                         setNewTask({ ...newTask, description: e.target.value })
                     }
+                    required
                 />
                 <br />
                 <br />
-                <button onClick={addTask} className="btn">
-                    Add Task
-                </button>
-            </div>
+                <input
+                    type="submit"
+                    value={"Add Task"}
+                    className="btn"
+                    onClick={addTask}
+                />
+            </form>
             <ul>
                 {tasks.map((task) => (
                     <li key={task._id}>
-                        <strong>{task.title}</strong> - {task.description}
-                        &nbsp;
-                        <button
-                            className="btn"
-                            onClick={() =>
-                                updateTask(task._id, {
-                                    ...task,
-                                    completed: !task.completed,
-                                })
-                            }
-                        >
-                            {task.completed
-                                ? "Mark Incomplete"
-                                : "Mark Complete"}
-                        </button>
-                        &nbsp;
-                        <button
-                            onClick={() => deleteTask(task._id)}
-                            className="btn"
-                        >
-                            Delete
-                        </button>
-                        <br />
+                        <div className="task">
+                            <strong>{task.title}</strong>
+                            <p>{task.description}</p>
+                        </div>
+                        <div className="action">
+                            <button
+                                className="btn-task"
+                                onClick={() =>
+                                    updateTask(task._id, {
+                                        ...task,
+                                        completed: !task.completed,
+                                    })
+                                }
+                            >
+                                {task.completed
+                                    ? "Mark Incomplete"
+                                    : "Mark Complete"}
+                            </button>
+                            <button
+                                onClick={() => deleteTask(task._id)}
+                                className="btn-task"
+                            >
+                                Delete
+                            </button>
+                        </div>
                     </li>
                 ))}
             </ul>
