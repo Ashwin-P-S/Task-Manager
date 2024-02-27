@@ -69,4 +69,4 @@ Before running the application, make sure you have the following installed:
 
 1. Open your web browser and go to http://localhost:3000.
 
-2. Use the Task Manager to add, update, mark as complete/incomplete, and delete tasks.
+2. Use the Task Manager to add, mark as complete/incomplete, and delete tasks.
